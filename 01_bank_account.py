@@ -26,7 +26,6 @@ Once your classes are complete, copy and paste the above example below them in o
 """
 
 
-
 """
 Write a class that meets these requirements.
 
@@ -41,3 +40,36 @@ Behavior:
    * withdraw(amount)     # removes the amount from the balance, but does not allow the balance to go negative
 
 """
+
+
+class BankAccount:
+   def __init__(self, balance):
+      self.balance = balance
+
+   def check_balance(self):
+      return f'Your current balance is {self.balance}'
+
+   def deposit(self, amount):
+      self.balance += amount
+      return self.balance
+
+   def withdraw(self, amount):
+      if amount > self.balance:
+         return print("Insufficient funds")
+      else:
+         self.balance -= amount
+         return self.balance
+
+account = BankAccount(100)
+
+account.deposit(50)
+print(account.check_balance())  # Prints 150
+
+account.withdraw(30)
+print(account.check_balance())  # Prints 120
+
+account.withdraw(100)
+print(account.check_balance())  # Prints 20
+
+account.withdraw(50)  # Prints "Insufficient funds"
+print(account.check_balance())  # Prints 20

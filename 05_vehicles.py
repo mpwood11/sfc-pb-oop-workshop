@@ -33,7 +33,15 @@ Behavior:
    * get_info()     # Returns information about the vehicle
 
 """
+class Vehicle:
 
+   def __init__(self, make, model, year):
+      self.make = make
+      self.model = model
+      self.year = year
+
+   def get_info(self):
+      return f"Make: {self.make}, Model: {self.model}, Year: {self.year}"
 """
 Write a class that meets these requirements.
 
@@ -51,6 +59,13 @@ Example:
    print(car.get_info())    # Prints car information
 
 """
+class Car(Vehicle):
+   def __init__(self, make, model, year, doors):
+      super().__init__(make, model, year)
+      self.doors = doors
+
+   def get_info(self):
+      return super().get_info() + f", # Doors: {self.doors}"
 
 """
 Write a class that meets these requirements.
@@ -69,7 +84,13 @@ Example:
    print(truck.get_info())    # Prints truck information
 
 """
+class Truck(Vehicle):
+   def __init__(self, make, model, year, tow_cap):
+      super().__init__(make, model, year)
+      self.tow_cap = tow_cap
 
+   def get_info(self):
+      return super().get_info() + f", Towing Capacity: {self.tow_cap}"
 """
 Write a class that meets these requirements.
 
@@ -87,3 +108,18 @@ Example:
    print(motorcycle.get_info())    # Prints motorcycle information
 
 """
+class Motorcycle(Vehicle):
+   def __init__(self, make, model, year, type):
+      super().__init__(make, model, year)
+      self.type = type
+
+   def get_info(self):
+      return super().get_info() + f", Type: {self.type}"
+
+car = Car("Toyota", "Corolla", 2020, 4)
+truck = Truck("Ford", "F-150", 2018, 10000)
+motorcycle = Motorcycle("Harley-Davidson", "Sportster", 2019, "Cruiser")
+
+print(car.get_info())         # Prints car information
+print(truck.get_info())       # Prints truck information
+print(motorcycle.get_info())  # Prints motorcycle information
